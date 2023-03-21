@@ -12,6 +12,6 @@ class SaveToFile implements StorageInterface
     public static function save(string $path, array $data): void
     {
         $file = storage_path($path);
-        file_put_contents($file, [PHP_EOL, json_encode($data), now()], FILE_APPEND | LOCK_EX);
+        file_put_contents($file, ['Date: '.now(), json_encode($data), PHP_EOL], FILE_APPEND | LOCK_EX);
     }
 }

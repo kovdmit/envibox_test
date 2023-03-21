@@ -36,3 +36,5 @@ php artisan migrate
 ```
 php artisan serve
 ```
+- Откройте браузер и введите в адресную строку:
+http://127.0.0.1:8000/
