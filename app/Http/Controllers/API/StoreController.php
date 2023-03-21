@@ -13,7 +13,7 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         Contact::query()->create($data);
-        SaveToFile::save('app/messages.txt', $data);
+        SaveToFile::save($data);
         return response($data);
     }
 }

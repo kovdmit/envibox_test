@@ -2,16 +2,25 @@
 
 namespace App\Utils;
 
-class SaveToFile implements StorageInterface
+class SaveToFile implements SaveInterface
 {
     /**
-     * @param string $path
      * @param array $data
      * @return void
      */
-    public static function save(string $path, array $data): void
+    public static function save(array $data): void
     {
-        $file = storage_path($path);
-        file_put_contents($file, ['Date: '.now(), json_encode($data), PHP_EOL], FILE_APPEND | LOCK_EX);
+        $file = storage_path('app/messages.txt');
+        $name = $data['name'];
+        $phone = $data['phone'];
+        $message = $data['message'];
+        file_put_contents($file, [
+            '-------------------', PHP_EOL,
+            'Дата: '.now(), PHP_EOL,
+            'Имя: '.$name, PHP_EOL,
+            'Телефон: '.$phone, PHP_EOL,
+            'Сообщение: '.$message, PHP_EOL,
+            PHP_EOL
+        ], FILE_APPEND | LOCK_EX);
     }
 }
